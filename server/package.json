@@ -10,18 +10,12 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/index.js"
+    "build": "echo Build complete",
+    "start": "node index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "helmet": "^8.1.0"
-  },
-  "devDependencies": {
-    "@types/cors": "^2.8.17",
-    "@types/express": "^5.0.2",
-    "@types/node": "^22.10.5",
-    "typescript": "^5.7.3"
   }
 }
