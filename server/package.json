@@ -10,12 +10,10 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "build": "echo Build complete",
+    "build": "echo 'Build complete'",
     "start": "node index.js"
   },
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^5.1.0",
-    "helmet": "^8.1.0"
+    "express": "^5.1.0"
   }
 }

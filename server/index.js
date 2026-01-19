@@ -1,20 +1,8 @@
 // Ink Synthesis API - Express server
 import express from 'express';
-import cors from 'cors';
-import helmet from 'helmet';
 
 const app = express();
 const PORT = process.env.PORT || 10000;
-
-// Security middleware
-app.use(helmet());
-
-// CORS configuration
-const corsOrigin = process.env.CORS_ORIGIN || 'http://localhost:5173';
-app.use(cors({
-  origin: corsOrigin.split(',').map(o => o.trim()),
-  credentials: true,
-}));
 
 // Body parsing middleware
 app.use(express.json());
