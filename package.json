@@ -31,7 +31,8 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "test:ui": "vitest --ui",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "postinstall": "npm rebuild lightningcss @rollup/rollup-linux-x64-gnu || true"
   },
   "dependencies": {
     "@radix-ui/react-slider": "^1.3.6",
