@@ -45,11 +45,9 @@ services:
     runtime: node
     plan: free
     buildCommand: cd server && npm ci && npx prisma generate && npx prisma migrate deploy && npm run build
-    startCommand: cd server && npm start
+    startCommand: cd server && NODE_ENV=production npm start
     healthCheckPath: /health
     envVars:
-      - key: NODE_ENV
-        value: production
       - key: PORT
         value: "10000"
       - key: DATABASE_URL
