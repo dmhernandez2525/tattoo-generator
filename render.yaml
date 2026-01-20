@@ -44,7 +44,7 @@ services:
     name: ink-synthesis-api
     runtime: node
     plan: free
-    buildCommand: cd server && npm ci && npx prisma generate && npx prisma migrate deploy && npm run build
+    buildCommand: cd server && NODE_ENV=development npm ci && npx prisma generate && npx prisma migrate deploy && npm run build
     startCommand: cd server && NODE_ENV=production npm start
     healthCheckPath: /health
     envVars:
