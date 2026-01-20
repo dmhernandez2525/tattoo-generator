@@ -1,0 +1,21 @@
+{
+  "name": "ink-synthesis-api",
+  "version": "0.1.0",
+  "description": "Backend API for Ink Synthesis tattoo generator",
+  "author": "Daniel Hernandez",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "build": "echo 'Build complete'",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "helmet": "^8.1.0"
+  }
+}
