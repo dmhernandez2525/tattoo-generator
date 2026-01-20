@@ -10,7 +10,7 @@ services:
   # Static Site - React/Vite Frontend (FREE)
   # =============================================
   - type: web
-    name: ink-synthesis-client
+    name: ink-synthesis-site
     runtime: static
     buildCommand: npm ci && npm run build
     staticPublishPath: ./dist
