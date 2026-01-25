@@ -62,6 +62,35 @@ npm run lint
 npm run preview
 ```
 
+## Deployment
+
+### Render.com
+
+This project is configured for deployment on Render.com using `render.yaml`.
+
+**Required Environment Variables (set in Render Dashboard):**
+
+| Variable | Service | Description |
+|----------|---------|-------------|
+| `VITE_API_URL` | Frontend | URL of the backend API (e.g., `https://ink-synthesis-api.onrender.com`) |
+| `REPLICATE_API_TOKEN` | Backend | API token from [Replicate](https://replicate.com) for AI image generation |
+| `STRIPE_SECRET_KEY` | Backend | Stripe secret key for payments |
+| `STRIPE_WEBHOOK_SECRET` | Backend | Stripe webhook signing secret |
+| `CORS_ORIGIN` | Backend | Frontend URL for CORS (e.g., `https://ink-synthesis-site.onrender.com`) |
+
+**Auto-configured (via render.yaml):**
+- `PORT`: 10000
+- `DATABASE_URL`: PostgreSQL connection string
+- `JWT_SECRET`: Auto-generated
+
+### Steps
+
+1. Fork/clone this repository
+2. Create a new Blueprint on Render
+3. Connect your repository
+4. Set the required environment variables in the dashboard
+5. Deploy
+
 ## License
 
 MIT
