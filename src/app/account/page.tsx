@@ -72,8 +72,9 @@ function AccountForm() {
     if (!isLoaded || !user) return
     if (displayName) return
     const name = user.fullName || user.firstName || ''
+    // Use setTimeout to avoid synchronous setState in effect body
     if (name) {
-      setDisplayName(name)
+      setTimeout(() => setDisplayName(name), 0)
     }
   }, [displayName, isLoaded, user])
 

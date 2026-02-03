@@ -26,12 +26,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const stored = window.localStorage.getItem(THEME_STORAGE_KEY)
+    // Use setTimeout to avoid synchronous setState in effect body
     if (stored === 'light' || stored === 'dark') {
-      setTheme(stored)
+      setTimeout(() => setTheme(stored), 0)
       return
     }
 
-    setTheme(getSystemTheme())
+    setTimeout(() => setTheme(getSystemTheme()), 0)
   }, [])
 
   useEffect(() => {

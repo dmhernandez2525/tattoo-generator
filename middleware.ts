@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server'
-import type { NextRequest } from 'next/server'
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server'
 
 const demoMode = process.env.NEXT_PUBLIC_DEMO_MODE === 'true'
@@ -17,7 +16,7 @@ const authMiddleware = clerkMiddleware((auth, req) => {
   }
 })
 
-const demoMiddleware = (_req: NextRequest) => NextResponse.next()
+const demoMiddleware = () => NextResponse.next()
 
 export default demoMode ? demoMiddleware : authMiddleware
 

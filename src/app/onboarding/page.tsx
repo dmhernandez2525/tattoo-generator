@@ -48,8 +48,9 @@ function OnboardingForm() {
   useEffect(() => {
     if (!isLoaded || !user) return
     const name = user.fullName || user.firstName || ''
+    // Use setTimeout to avoid synchronous setState in effect body
     if (name) {
-      setDisplayName(name)
+      setTimeout(() => setDisplayName(name), 0)
     }
   }, [isLoaded, user])
 
