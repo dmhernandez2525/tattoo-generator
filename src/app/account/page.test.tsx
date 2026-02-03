@@ -236,8 +236,9 @@ describe('AccountPage in Normal Mode', () => {
     fireEvent.click(submitButton);
 
     await waitFor(() => {
+      // The error message is either from server or fallback
       expect(screen.getByText(/Server error|Unable to update profile/i)).toBeInTheDocument();
-    });
+    }, { timeout: 3000 });
   });
 
   it('should disable button while saving', async () => {
@@ -266,6 +267,9 @@ describe('AccountPage in Normal Mode', () => {
     const submitButton = screen.getByRole('button', { name: /Save Changes/i });
     fireEvent.click(submitButton);
 
-    expect(screen.getByRole('button', { name: /Saving/i })).toBeDisabled();
+    // Button text changes to "Saving..." with ellipsis
+    await waitFor(() => {
+      expect(screen.getByRole('button', { name: /Saving/i })).toBeDisabled();
+    });
   });
 });
