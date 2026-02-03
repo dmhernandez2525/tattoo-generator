@@ -12,7 +12,7 @@ type DemoRole = {
   title: string
   description: string
   icon: ReactNode
-  href: string
+  href: '/demo'
 }
 
 const demoRoles: DemoRole[] = [
