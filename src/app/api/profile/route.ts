@@ -3,15 +3,17 @@ import { auth, clerkClient } from '@clerk/nextjs/server'
 import { z } from 'zod'
 import { logger } from '@/lib/logger'
 
-type ProfileRole = 'user' | 'artist' | 'admin'
+type ProfileRole = 'user' | 'artist'
 
 const demoMode = process.env.NEXT_PUBLIC_DEMO_MODE === 'true'
 
+// User-facing roles - admin is excluded to prevent privilege escalation
 const profileSchema = z.object({
   displayName: z.string().min(2).max(64),
-  role: z.enum(['user', 'artist', 'admin']),
+  role: z.enum(['user', 'artist']),
 })
 
+// Metadata schema for reading (can include admin for existing users)
 const metadataSchema = z.object({
   displayName: z.string().optional(),
   role: z.enum(['user', 'artist', 'admin']).optional(),
@@ -38,7 +40,9 @@ export async function GET() {
     const displayName = parsed.success
       ? parsed.data.displayName ?? user.fullName ?? user.firstName ?? ''
       : user.fullName ?? user.firstName ?? ''
-    const role = parsed.success ? parsed.data.role ?? 'user' : 'user'
+    // Constrain role to user-facing options (admin users show as 'user' in API response)
+    const rawRole = parsed.success ? parsed.data.role ?? 'user' : 'user'
+    const role: ProfileRole = rawRole === 'admin' ? 'user' : rawRole === 'artist' ? 'artist' : 'user'
 
     return buildProfileResponse({ displayName, role })
   } catch (error) {
