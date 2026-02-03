@@ -1,3 +1,5 @@
+'use client';
+
 import { Card } from '@/components/ui/card';
 import type { TattooStyle } from '@/hooks/use-tattoo-generator';
 import { Download, Share2, Printer } from 'lucide-react';

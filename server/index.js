@@ -2,6 +2,7 @@
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
+import { logger } from './logger.js';
 
 const app = express();
 const PORT = process.env.PORT || 10000;
@@ -10,7 +11,7 @@ const PORT = process.env.PORT || 10000;
 app.use(helmet());
 
 // CORS configuration
-const corsOrigin = process.env.CORS_ORIGIN || 'http://localhost:5173';
+const corsOrigin = process.env.CORS_ORIGIN || 'http://localhost:3000';
 app.use(cors({
   origin: corsOrigin.split(',').map(o => o.trim()),
   credentials: true,
@@ -64,18 +65,20 @@ app.use((_req, res) => {
 
 // Error handler
 app.use((err, _req, res, _next) => {
-  console.error('Error:', err.message);
+  const message = err instanceof Error ? err.message : 'Unknown error';
+  logger.error('api.error', { detail: message });
   res.status(500).json({
     error: 'Internal Server Error',
     message: process.env.NODE_ENV === 'production'
       ? 'An unexpected error occurred'
-      : err.message,
+      : message,
   });
 });
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`Ink Synthesis API running on port ${PORT}`);
-  console.log(`Environment: ${process.env.NODE_ENV || 'development'}`);
-  console.log(`Health check: http://localhost:${PORT}/health`);
+  logger.info('api.start', {
+    port: PORT,
+    environment: process.env.NODE_ENV || 'development',
+  });
 });

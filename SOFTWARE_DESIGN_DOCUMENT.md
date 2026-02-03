@@ -33,7 +33,7 @@ INK SYNTHESIS is an AI-driven tattoo generation and haptic imprinting interface 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
 │                           INK SYNTHESIS                              │
-│                         React Application                            │
+│                     Next.js Application (App Router)                 │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                      │
 │  ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐ │
@@ -47,8 +47,8 @@ INK SYNTHESIS is an AI-driven tattoo generation and haptic imprinting interface 
 │           └──────────────────────┼──────────────────────┘           │
 │                                  ▼                                   │
 │  ┌─────────────────────────────────────────────────────────────┐   │
-│  │                        App.tsx                               │   │
-│  │            (View State Management + Routing)                 │   │
+│  │                 app/page.tsx + App.tsx                       │   │
+│  │        (Route Entry + View State Management)                 │   │
 │  └─────────────────────────────────────────────────────────────┘   │
 │                                  │                                   │
 │           ┌──────────────────────┼──────────────────────┐           │
@@ -371,7 +371,7 @@ Three calibration sliders control machine parameters:
 | Orbitron | Display headings, titles, buttons |
 | Inter | Body text, descriptions, labels |
 
-**CSS Custom Properties (defined in index.css):**
+**CSS Custom Properties (defined in `src/app/globals.css`):**
 ```css
 @theme {
   --color-neon-purple: #b026ff;
@@ -421,10 +421,16 @@ Component-specific responsive behavior:
 
 | Package | Version | Purpose |
 |---------|---------|---------|
+| next | ^15.1.0 | App Router framework + SSR |
 | react | ^19.2.0 | UI component library |
 | react-dom | ^19.2.0 | DOM rendering |
 | typescript | ~5.9.3 | Type safety |
-| vite | ^7.2.4 | Build tool and dev server |
+
+### Authentication
+
+| Package | Purpose |
+|---------|---------|
+| @clerk/nextjs | Authentication provider + UI |
 
 ### UI Libraries
 
@@ -440,19 +446,30 @@ Component-specific responsive behavior:
 | Package | Purpose |
 |---------|---------|
 | tailwindcss | Utility-first CSS framework |
-| @tailwindcss/vite | Vite integration for Tailwind |
+| @tailwindcss/postcss | PostCSS integration for Tailwind |
 | class-variance-authority | Variant-based component styling |
 | clsx | Conditional class merging |
 | tailwind-merge | Intelligent Tailwind class deduplication |
+
+### Validation
+
+| Package | Purpose |
+|---------|---------|
+| zod | Runtime validation and schemas |
 
 ### Development Tools
 
 | Package | Purpose |
 |---------|---------|
-| @vitejs/plugin-react | React support for Vite |
 | eslint | Code linting |
 | eslint-plugin-react-hooks | React hooks linting rules |
-| eslint-plugin-react-refresh | Fast refresh support |
+
+### Data Layer
+
+| Package | Purpose |
+|---------|---------|
+| prisma | Database schema and migrations |
+| @prisma/client | Generated database client |
 
 ---
 
@@ -478,7 +495,7 @@ Component-specific responsive behavior:
 ### Recommended Test Framework Setup
 
 ```bash
-# Suggested dependencies (not yet installed)
+# Test dependencies
 npm install -D vitest @testing-library/react @testing-library/jest-dom
 ```
 
@@ -589,8 +606,15 @@ src/
 
 ```
 tattoo-generator/
+├── legacy/
+│   ├── pages/                 # Archived demo pages (Vite era)
+│   └── vite/                  # Archived Vite configs + entry files
 ├── public/                    # Static assets
 ├── src/
+│   ├── app/
+│   │   ├── globals.css
+│   │   ├── layout.tsx
+│   │   └── page.tsx
 │   ├── components/
 │   │   ├── features/
 │   │   │   ├── generator/
@@ -611,11 +635,11 @@ tattoo-generator/
 │   ├── lib/
 │   │   └── utils.ts
 │   ├── App.tsx
-│   ├── main.tsx
-│   └── index.css
 ├── package.json
 ├── tsconfig.json
-├── vite.config.ts
+├── next.config.ts
+├── postcss.config.mjs
+├── tailwind.config.ts
 └── README.md
 ```
 
