@@ -1,5 +1,6 @@
 'use client'
 
+import type { ReactNode } from 'react'
 import Link from 'next/link'
 import { Layout } from '@/components/layout/Layout'
 import { Button } from '@/components/ui/button'
@@ -10,7 +11,7 @@ type DemoRole = {
   id: string
   title: string
   description: string
-  icon: JSX.Element
+  icon: ReactNode
   href: string
 }
 
