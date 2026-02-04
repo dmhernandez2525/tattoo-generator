@@ -3,6 +3,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import type { RenderOptions, RenderResult } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { ThemeProvider } from '@/components/theme/ThemeProvider';
 
 /**
  * Custom render function that wraps components with necessary providers
@@ -16,7 +17,7 @@ function customRender(
   const user = userEvent.setup();
 
   const Wrapper = ({ children }: { children: React.ReactNode }) => {
-    return <>{children}</>;
+    return <ThemeProvider>{children}</ThemeProvider>;
   };
 
   return {

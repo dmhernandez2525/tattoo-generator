@@ -4,7 +4,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9-blue.svg)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-19-61dafb.svg)](https://react.dev/)
 
-AI-Driven Tattoo Generation & Haptic Imprinting Interface - a futuristic React application for generating tattoo designs using AI and controlling hardware for imprinting.
+AI-Driven Tattoo Generation & Haptic Imprinting Interface - a futuristic Next.js application for generating tattoo designs using AI and controlling hardware for imprinting.
 
 ## Features
 
@@ -21,29 +21,29 @@ npm install
 npm run dev
 ```
 
-Open `http://localhost:5173` to view the application.
+Open `http://localhost:3000` to view the application.
 
 ## Tech Stack
 
-- React 19 + TypeScript 5.9
-- Vite 7 build system
-- Tailwind CSS 4
+- Next.js 15 + React 19 + TypeScript 5.9
+- Tailwind CSS v4
 - Framer Motion animations
 - Radix UI primitives
 - Lucide icons
+- Prisma + PostgreSQL
+- Clerk authentication
 
 ## Project Structure
 
 ```
 src/
+├── app/                 # Next.js App Router
 ├── components/
-│   ├── features/
-│   │   ├── generator/    # AI tattoo generation UI
-│   │   └── machine/      # Hardware interface dashboard
-│   ├── layout/           # Page layout components
-│   └── ui/               # Reusable UI primitives
-├── hooks/                # Custom React hooks
-└── lib/                  # Utilities
+│   ├── features/        # AI tattoo generation UI + machine dashboard
+│   ├── layout/          # Page layout components
+│   └── ui/              # Reusable UI primitives
+├── hooks/               # Custom React hooks
+└── lib/                 # Utilities
 ```
 
 ## Development
@@ -58,9 +58,13 @@ npm run build
 # Run linter
 npm run lint
 
-# Preview production build
-npm run preview
+# Type check
+npm run type-check
 ```
+
+## Demo Mode
+
+See `docs/DEMO_MODE.md` for how to enable demo mode and available demo routes.
 
 ## Deployment
 
@@ -72,24 +76,10 @@ This project is configured for deployment on Render.com using `render.yaml`.
 
 | Variable | Service | Description |
 |----------|---------|-------------|
-| `VITE_API_URL` | Frontend | URL of the backend API (e.g., `https://ink-synthesis-api.onrender.com`) |
-| `REPLICATE_API_TOKEN` | Backend | API token from [Replicate](https://replicate.com) for AI image generation |
-| `STRIPE_SECRET_KEY` | Backend | Stripe secret key for payments |
-| `STRIPE_WEBHOOK_SECRET` | Backend | Stripe webhook signing secret |
-| `CORS_ORIGIN` | Backend | Frontend URL for CORS (e.g., `https://ink-synthesis-site.onrender.com`) |
-
-**Auto-configured (via render.yaml):**
-- `PORT`: 10000
-- `DATABASE_URL`: PostgreSQL connection string
-- `JWT_SECRET`: Auto-generated
-
-### Steps
-
-1. Fork/clone this repository
-2. Create a new Blueprint on Render
-3. Connect your repository
-4. Set the required environment variables in the dashboard
-5. Deploy
+| `DATABASE_URL` | Web | PostgreSQL connection string |
+| `NEXT_PUBLIC_DEMO_MODE` | Web | Enable demo mode in portfolio deployments |
+| `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` | Web | Clerk publishable key |
+| `CLERK_SECRET_KEY` | Web | Clerk secret key |
 
 ## License
 

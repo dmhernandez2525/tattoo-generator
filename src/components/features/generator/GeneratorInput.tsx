@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -15,7 +17,7 @@ export function GeneratorInput({ onGenerate, isGenerating }: GeneratorInputProps
   const [prompt, setPrompt] = useState('');
   const [selectedStyle, setSelectedStyle] = useState<TattooStyle>('Cyberpunk');
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!prompt.trim()) return;
     await onGenerate(prompt, selectedStyle);
@@ -23,7 +25,8 @@ export function GeneratorInput({ onGenerate, isGenerating }: GeneratorInputProps
 
   return (
     <Card variant="neon" className="w-full max-w-2xl mx-auto backdrop-blur-2xl">
-      <CardContent className="p-6 space-y-6">
+      <CardContent className="p-6">
+        <form className="space-y-6" onSubmit={handleSubmit}>
         <div className="space-y-2">
           <label className="text-sm font-medium text-slate-300 ml-1">Describe your tattoo idea</label>
           <div className="relative">
@@ -61,7 +64,7 @@ export function GeneratorInput({ onGenerate, isGenerating }: GeneratorInputProps
         </div>
 
         <Button 
-            onClick={handleSubmit} 
+            type="submit"
             disabled={isGenerating || !prompt.trim()}
             className="w-full h-12 text-lg font-bold tracking-widest relative overflow-hidden group"
             variant="default" // Using default purple neon variant
@@ -81,6 +84,7 @@ export function GeneratorInput({ onGenerate, isGenerating }: GeneratorInputProps
                  <div className="absolute bottom-0 left-0 h-1 bg-neon-cyan animate-[loading_2s_ease-in-out_infinite] w-full" />
             )}
         </Button>
+        </form>
       </CardContent>
     </Card>
   );

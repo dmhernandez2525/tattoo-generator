@@ -13,7 +13,7 @@ Build the foundational AI-powered tattoo design generation platform with style p
 
 ### M1: Project Foundation (Week 1)
 
-- [ ] Next.js 14 frontend scaffolding with TypeScript
+- [ ] Next.js 15 frontend scaffolding with TypeScript (App Router)
 - [ ] Strapi 5 CMS backend setup
 - [ ] Express microservice for AI generation
 - [ ] PostgreSQL and Redis configuration

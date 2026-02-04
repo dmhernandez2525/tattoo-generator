@@ -1,3 +1,5 @@
+'use client';
+
 import React, { createContext, useContext, useState, useCallback } from 'react';
 import type { TattooStyle } from '@/hooks/use-tattoo-generator';
 import { DEMO_DESIGNS, STYLE_PRESETS, CALIBRATION_PRESETS } from '@/data/demo-data';

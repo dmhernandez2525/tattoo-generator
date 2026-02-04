@@ -1,6 +1,6 @@
-import { defineConfig } from 'vitest/config';
-import react from '@vitejs/plugin-react';
-import { resolve } from 'path';
+import { defineConfig } from 'vitest/config'
+import react from '@vitejs/plugin-react'
+import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [react()],
@@ -9,7 +9,7 @@ export default defineConfig({
     environment: 'happy-dom',
     setupFiles: ['./src/test/setup.ts'],
     include: ['**/*.{test,spec}.{js,jsx,ts,tsx}'],
-    exclude: ['node_modules', 'dist', '.git'],
+    exclude: ['node_modules', 'dist', '.git', '.next'],
     coverage: {
       provider: 'v8',
       reporter: ['text', 'json', 'html', 'lcov'],
@@ -19,12 +19,21 @@ export default defineConfig({
         '**/*.d.ts',
         '**/*.config.*',
         '**/types/*',
+        'legacy/**',
+        'server/**',
+        'dist/**',
+        '.next/**',
+        'src/app/api/**',
+        'src/app/sign-in/**',
+        'src/app/sign-up/**',
+        'src/components/providers/**',
+        'src/lib/prisma.ts',
       ],
       thresholds: {
-        branches: 40,
-        functions: 30,
-        lines: 40,
-        statements: 40,
+        branches: 80,
+        functions: 80,
+        lines: 80,
+        statements: 80,
       },
     },
   },
@@ -33,4 +42,4 @@ export default defineConfig({
       '@': resolve(__dirname, './src'),
     },
   },
-});
+})

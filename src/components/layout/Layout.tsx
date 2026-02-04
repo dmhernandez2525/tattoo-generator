@@ -1,12 +1,14 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
+import { ThemeToggle } from '@/components/theme/ThemeToggle';
 
 interface LayoutProps {
   children: React.ReactNode;
   className?: string;
+  showThemeToggle?: boolean;
 }
 
-export function Layout({ children, className }: LayoutProps) {
+export function Layout({ children, className, showThemeToggle = true }: LayoutProps) {
   return (
     <div className="relative min-h-screen w-full overflow-hidden bg-bg-dark text-white selection:bg-neon-cyan/30">
       {/* Background Effects */}
@@ -21,6 +23,11 @@ export function Layout({ children, className }: LayoutProps) {
 
       {/* Content */}
       <main className={cn("relative z-10 container mx-auto px-4 py-8", className)}>
+        {showThemeToggle && (
+          <div className="fixed top-6 right-6 z-20">
+            <ThemeToggle />
+          </div>
+        )}
         {children}
       </main>
     </div>

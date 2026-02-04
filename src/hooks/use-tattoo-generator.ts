@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 
 // Mock styles for specialized generation
@@ -14,12 +16,20 @@ interface GeneratedImage {
   style: TattooStyle;
 }
 
-export function useTattooGenerator() {
+interface TattooGeneratorState {
+  generateTattoo: (prompt: string, style: TattooStyle) => Promise<void>;
+  isGenerating: boolean;
+  generatedImages: GeneratedImage[];
+  error: string | null;
+  TATTOO_STYLES: TattooStyle[];
+}
+
+export function useTattooGenerator(): TattooGeneratorState {
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedImages, setGeneratedImages] = useState<GeneratedImage[]>([]);
   const [error, setError] = useState<string | null>(null);
 
-  const generateTattoo = async (prompt: string, style: TattooStyle) => {
+  const generateTattoo = async (prompt: string, style: TattooStyle): Promise<void> => {
     setIsGenerating(true);
     setError(null);
 

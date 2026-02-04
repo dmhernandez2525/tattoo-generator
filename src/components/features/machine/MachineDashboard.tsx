@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -5,11 +7,18 @@ import { Slider } from '@/components/ui/slider';
 import { HapticMatrix } from './HapticMatrix';
 import { Activity, Power, Zap, Gauge, ChevronLeft } from 'lucide-react';
 
-interface MachineDashboardProps {
-    onBack: () => void;
+interface MachineSettings {
+    voltage: number;
+    frequency: number;
+    depth: number;
 }
 
-export function MachineDashboard({ onBack }: MachineDashboardProps) {
+interface MachineDashboardProps {
+    onBack: () => void;
+    onSettingsChange?: (settings: MachineSettings) => void;
+}
+
+export function MachineDashboard({ onBack, onSettingsChange }: MachineDashboardProps) {
     const [isConnected, setIsConnected] = useState(false);
     const [isPrinting, setIsPrinting] = useState(false);
     
@@ -17,6 +26,15 @@ export function MachineDashboard({ onBack }: MachineDashboardProps) {
     const [depth, setDepth] = useState([1.2]); // mm
     const [speed, setSpeed] = useState([85]); // Hz
     const [voltage, setVoltage] = useState([7.5]); // V
+
+    useEffect(() => {
+        if (!onSettingsChange) return;
+        onSettingsChange({
+            voltage: voltage[0] ?? 7.5,
+            frequency: speed[0] ?? 85,
+            depth: depth[0] ?? 1.2,
+        });
+    }, [depth, speed, voltage, onSettingsChange]);
 
     // Connection Simulation
     useEffect(() => {
@@ -53,7 +71,7 @@ export function MachineDashboard({ onBack }: MachineDashboardProps) {
                         </CardTitle>
                     </CardHeader>
                     <CardContent className="flex-1 p-6 flex flex-col gap-4">
-                        <HapticMatrix isActive={isPrinting} intensity={speed[0]} className="flex-1 w-full" />
+                        <HapticMatrix isActive={isPrinting} intensity={speed[0] ?? 85} className="flex-1 w-full" />
                         
                         <div className="grid grid-cols-3 gap-4 text-center">
                             <div className="bg-white/5 rounded-lg p-2 border border-white/10">
