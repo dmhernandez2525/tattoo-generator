@@ -49,7 +49,7 @@ export function MachineDashboard({ onBack, onSettingsChange }: MachineDashboardP
     return (
         <div className="w-full max-w-5xl space-y-8 animate-in fade-in zoom-in-95 duration-500">
              {/* Header */}
-             <div className="flex items-center justify-between">
+             <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
                 <Button variant="ghost" onClick={onBack} className="text-slate-400 hover:text-white">
                     <ChevronLeft className="w-4 h-4 mr-2" /> Disconnect
                 </Button>
@@ -63,7 +63,7 @@ export function MachineDashboard({ onBack, onSettingsChange }: MachineDashboardP
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 {/* Visualizer Panel */}
-                <Card variant="neon" className="lg:col-span-2 min-h-[400px] flex flex-col">
+                <Card variant="neon" className="lg:col-span-2 min-h-[250px] sm:min-h-[400px] flex flex-col">
                     <CardHeader>
                         <CardTitle className="flex items-center gap-2 text-neon-cyan">
                             <Activity className="w-5 h-5" />
@@ -72,19 +72,19 @@ export function MachineDashboard({ onBack, onSettingsChange }: MachineDashboardP
                     </CardHeader>
                     <CardContent className="flex-1 p-6 flex flex-col gap-4">
                         <HapticMatrix isActive={isPrinting} intensity={speed[0] ?? 85} className="flex-1 w-full" />
-                        
-                        <div className="grid grid-cols-3 gap-4 text-center">
+
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
                             <div className="bg-white/5 rounded-lg p-2 border border-white/10">
                                 <div className="text-xs text-slate-400 uppercase tracking-wider">Active Needles</div>
-                                <div className="text-2xl font-display font-bold text-white">{isPrinting ? '1,024' : '0'}</div>
+                                <div className="text-lg sm:text-2xl font-display font-bold text-white">{isPrinting ? '1,024' : '0'}</div>
                             </div>
                             <div className="bg-white/5 rounded-lg p-2 border border-white/10">
                                 <div className="text-xs text-slate-400 uppercase tracking-wider">Pressure</div>
-                                <div className="text-2xl font-display font-bold text-white">{isPrinting ? '450g' : '0g'}</div>
+                                <div className="text-lg sm:text-2xl font-display font-bold text-white">{isPrinting ? '450g' : '0g'}</div>
                             </div>
                             <div className="bg-white/5 rounded-lg p-2 border border-white/10">
                                 <div className="text-xs text-slate-400 uppercase tracking-wider">Temp</div>
-                                <div className="text-2xl font-display font-bold text-white">34°C</div>
+                                <div className="text-lg sm:text-2xl font-display font-bold text-white">34°C</div>
                             </div>
                         </div>
                     </CardContent>

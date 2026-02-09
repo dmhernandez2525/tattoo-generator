@@ -70,22 +70,22 @@ export function DemoGenerator() {
 
       <div className="w-full max-w-6xl space-y-8 animate-in fade-in zoom-in-95 duration-500">
         {/* Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
           <Link href="/demo">
             <Button variant="ghost" className="text-slate-400 hover:text-white">
               <ChevronLeft className="w-4 h-4 mr-2" /> Back to Demo
             </Button>
           </Link>
-          <h2 className="text-2xl font-display font-bold text-white tracking-widest">
+          <h2 className="text-xl sm:text-2xl font-display font-bold text-white tracking-widest">
             DESIGN STUDIO
           </h2>
-          <div className="w-24" />
+          <div className="w-24 hidden sm:block" />
         </div>
 
         {/* Generator Input */}
         <div className="flex flex-col items-center">
           <Card variant="neon" className="w-full max-w-2xl mx-auto backdrop-blur-2xl">
-            <CardContent className="p-6 space-y-6">
+            <CardContent className="p-4 sm:p-6 space-y-6">
               <div className="space-y-2">
                 <label className="text-sm font-medium text-slate-300 ml-1">
                   Describe your tattoo idea
@@ -95,7 +95,7 @@ export function DemoGenerator() {
                     value={prompt}
                     onChange={(e) => setPrompt(e.target.value)}
                     placeholder="e.g. A robotic geisha with neon circuitry..."
-                    className="h-14 pl-4 pr-12 text-lg bg-black/50 border-white/10 focus-visible:ring-neon-cyan/50"
+                    className="h-12 sm:h-14 pl-4 pr-12 text-base sm:text-lg bg-black/50 border-white/10 focus-visible:ring-neon-cyan/50"
                     disabled={isGenerating}
                     onKeyDown={(e) => e.key === 'Enter' && handleGenerate()}
                   />

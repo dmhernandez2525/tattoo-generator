@@ -20,10 +20,10 @@ function App() {
   const renderHome = () => (
     <div className="max-w-4xl w-full text-center space-y-12 animate-in fade-in slide-in-from-bottom-5 duration-500">
         <div className="space-y-4">
-          <h1 className="text-7xl font-black bg-gradient-to-r from-neon-purple via-white to-neon-cyan bg-clip-text text-transparent tracking-tighter drop-shadow-[0_0_30px_rgba(176,38,255,0.4)]">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-black bg-gradient-to-r from-neon-purple via-white to-neon-cyan bg-clip-text text-transparent tracking-tighter drop-shadow-[0_0_30px_rgba(176,38,255,0.4)]">
             INK SYNTHESIS
           </h1>
-          <p className="text-slate-300 text-2xl font-light tracking-wide max-w-2xl mx-auto">
+          <p className="text-slate-300 text-lg sm:text-xl md:text-2xl font-light tracking-wide max-w-2xl mx-auto">
             AI-Driven Tattoo Generation & <span className="text-neon-cyan font-semibold">Haptic Imprinting</span>
           </p>
         </div>
@@ -74,12 +74,12 @@ function App() {
 
   const renderGenerator = () => (
       <div className="w-full max-w-6xl space-y-8 animate-in fade-in zoom-in-95 duration-500">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
               <Button variant="ghost" onClick={() => setView('home')} className="text-slate-400 hover:text-white">
                   <ChevronLeft className="w-4 h-4 mr-2" /> Back to Home
               </Button>
-              <h2 className="text-2xl font-display font-bold text-white tracking-widest">DESIGN STUDIO</h2>
-              <div className="w-24" /> {/* Spacer */}
+              <h2 className="text-xl sm:text-2xl font-display font-bold text-white tracking-widest">DESIGN STUDIO</h2>
+              <div className="w-24 hidden sm:block" /> {/* Spacer */}
           </div>
 
           <div className="flex flex-col items-center">

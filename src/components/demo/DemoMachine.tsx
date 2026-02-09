@@ -27,7 +27,7 @@ export function DemoMachine() {
   }
 
   return (
-    <Layout className="flex flex-col items-center justify-start min-h-[80vh] py-8">
+    <Layout className="flex flex-col items-center justify-start min-h-[80vh] py-4 sm:py-8">
       <div className="w-full max-w-5xl space-y-4">
         <Link href="/demo">
           <Button variant="ghost" className="text-slate-400 hover:text-white">
