@@ -25,7 +25,7 @@ export function GeneratorInput({ onGenerate, isGenerating }: GeneratorInputProps
 
   return (
     <Card variant="neon" className="w-full max-w-2xl mx-auto backdrop-blur-2xl">
-      <CardContent className="p-6">
+      <CardContent className="p-4 sm:p-6">
         <form className="space-y-6" onSubmit={handleSubmit}>
         <div className="space-y-2">
           <label className="text-sm font-medium text-slate-300 ml-1">Describe your tattoo idea</label>
@@ -34,7 +34,7 @@ export function GeneratorInput({ onGenerate, isGenerating }: GeneratorInputProps
               value={prompt}
               onChange={(e) => setPrompt(e.target.value)}
               placeholder="e.g. A robotic geisha with neon circuitry..." 
-              className="h-14 pl-4 pr-12 text-lg bg-black/50 border-white/10 focus-visible:ring-neon-cyan/50"
+              className="h-12 sm:h-14 pl-4 pr-12 text-base sm:text-lg bg-black/50 border-white/10 focus-visible:ring-neon-cyan/50"
               disabled={isGenerating}
             />
             <Sparkles className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-500 w-5 h-5 pointer-events-none" />
