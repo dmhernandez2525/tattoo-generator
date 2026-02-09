@@ -44,7 +44,7 @@ export function DemoRoleSelector() {
     <Layout className="flex flex-col items-center justify-start min-h-[80vh] py-12">
       <div className="w-full max-w-4xl space-y-8 animate-in fade-in zoom-in-95 duration-500">
         <div className="text-center space-y-3">
-          <h1 className="text-4xl font-display font-bold text-white tracking-widest">DEMO MODE</h1>
+          <h1 className="text-2xl sm:text-4xl font-display font-bold text-white tracking-widest">DEMO MODE</h1>
           <p className="text-slate-300">Choose a role to explore the demo experience.</p>
         </div>
 

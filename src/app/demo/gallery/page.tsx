@@ -13,17 +13,17 @@ export default function DemoGalleryPage() {
   return (
     <Layout className="flex flex-col items-center justify-start min-h-[80vh] py-8">
       <div className="w-full max-w-6xl space-y-8 animate-in fade-in zoom-in-95 duration-500">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
           <Link href="/demo">
             <Button variant="ghost" className="text-slate-400 hover:text-white">
               <ChevronLeft className="w-4 h-4 mr-2" /> Back to Demo
             </Button>
           </Link>
           <h2 className="text-2xl font-display font-bold text-white tracking-widest">GALLERY</h2>
-          <div className="w-24" />
+          <div className="w-24 hidden sm:block" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6">
           {demoDesigns.map((design) => (
             <Link key={design.id} href={`/demo/design/${design.id}`}>
               <Card variant="glass" padding="none" className="group overflow-hidden aspect-square relative">

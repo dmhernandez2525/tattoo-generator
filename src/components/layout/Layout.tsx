@@ -22,7 +22,7 @@ export function Layout({ children, className, showThemeToggle = true }: LayoutPr
       <div className="fixed inset-0 z-0 opacity-[0.03] pointer-events-none bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
       {/* Content */}
-      <main className={cn("relative z-10 container mx-auto px-4 py-8", className)}>
+      <main className={cn("relative z-10 container mx-auto px-3 py-4 sm:px-4 sm:py-8", className)}>
         {showThemeToggle && (
           <div className="fixed top-6 right-6 z-20">
             <ThemeToggle />

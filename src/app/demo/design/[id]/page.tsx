@@ -17,14 +17,14 @@ export default function DemoDesignPage() {
   return (
     <Layout className="flex flex-col items-center justify-start min-h-[80vh] py-8">
       <div className="w-full max-w-5xl space-y-8 animate-in fade-in zoom-in-95 duration-500">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-2">
           <Link href="/demo/gallery">
             <Button variant="ghost" className="text-slate-400 hover:text-white">
               <ChevronLeft className="w-4 h-4 mr-2" /> Back to Gallery
             </Button>
           </Link>
-          <h2 className="text-2xl font-display font-bold text-white tracking-widest">DESIGN DETAIL</h2>
-          <div className="w-24" />
+          <h2 className="text-xl sm:text-2xl font-display font-bold text-white tracking-widest">DESIGN DETAIL</h2>
+          <div className="w-24 hidden sm:block" />
         </div>
 
         {!design ? (
